@@ -1,0 +1,53 @@
+// Given 2 strings, a and b, return the number of the positions where they contain
+// the same length 2 substring. So "xxcaazz" and "xxbaaz" yields 3, since the "xx"
+// "xx", "aa", and "az" substrings appear in the same place in both strings.
+
+function stringMatch(a, b) {
+  let count = 0;
+  for (let i = 0; i < a.length - 1 && i < b.length - 1; i++) {
+    if (a.slice(i, i + 2) === b.slice(i, i + 2)) {
+      count++;
+    }
+  }
+  return count;
+}
+
+// Given a string, return a version where all the "x" have been removed. Except an "x" at the very start or end should not be removed.
+
+function stringX(str) {
+  let noX = '';
+  for (let i = 1; i < str.length - 1; i++) {
+    if (str[i] !== 'x') {
+      noX += str[i];
+    }
+  }
+  return str.slice(0, 1) + noX + str.slice(-1);
+}
+
+// Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 ... so "kittens" yields "kien".
+
+function altPairs(str) {
+  let altString = '';
+  for (let i = 0; i < str.length; i += 2) {
+    if (i + 1 < str.length) {
+      altString += str[i] + str[i + 1];
+    } else {
+      altString += str[i];
+    }
+  }
+  return altString;
+}
+
+// Suppose the string "yak" is unlucky. Given a string, return a version where all the "yak" are removed, but the "a" can be any char. The "yak" strings will not overlap.
+
+function stringYak(str) {
+  let noYak = '';
+  for (let i = 0; i < str.length; i++) {
+    if (str.slice(i, i + 3) === 'yak') {
+      i += 2;
+    } else {
+      noYak += str[i];
+    }
+  }
+  return noYak;
+}
