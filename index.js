@@ -68,3 +68,16 @@ function array667(nums) {
   }
   return count;
 }
+
+// Given an array of ints, we'll say that a triple is a value appearing 3 times in a row in the array. Return true if the array does not contain any triples.
+
+function noTriples(nums) {
+  for (let i = 0; i < nums.length; i++) {
+    if (i + 2 < nums.length) {
+      if (nums[i] === nums[i + 1] && nums[i] === nums[i + 2]) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
