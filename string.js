@@ -19,3 +19,25 @@ function makeTags(tag, word) {
 function makeOutWord(out, word) {
   return out.substring(0, 2) + word + out.substring(2, 4);
 }
+
+// Given a string, return a new string made of 3 copies of the last 2 chars of the original string. The string length will be at least 2.
+
+function extraEnd(str) {
+  return str.slice(-2).repeat(3);
+}
+
+// Given a string, return the string made of its first two chars, so the String "Hello" yields "He". If the string is shorter than length 2, return whatever there is, so "X" yields "X", and the empty string "" yields the empty string "". Note that str.length() returns the length of a string.
+
+function firstTwo(str) {
+  return str.slice(0, 2);
+}
+
+// Given a string of even length, return the first half. So the string "WooHoo" yields "Woo".
+
+function firstHalf(str) {
+  if (str.length % 2 === 0) {
+    return str.slice(0, str.length / 2);
+  } else {
+    return str;
+  }
+}
