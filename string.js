@@ -41,3 +41,79 @@ function firstHalf(str) {
     return str;
   }
 }
+
+// Given a string, return a version without the first and last char, so "Hello" yields "ell". The string length will be at least 2.
+
+function withoutEnd(str) {
+  return str.slice(1, -1);
+}
+
+// Given 2 strings, a and b, return a string of the form short+long+short, with the shorter string on the outside and the longer string on the inside. The strings will not be the same length, but they may be empty (length 0).
+
+function comboString(a, b) {
+  if (a.length < b.length) {
+    return `${a}${b}${a}`;
+  } else if (b.length < a.length) {
+    return `${b}${a}${b}`;
+  }
+}
+
+// Given 2 strings, return their concatenation, except omit the first char of each. The strings will be at least length 1.
+
+function nonStart(a, b) {
+  return a.slice(1) + b.slice(1);
+}
+
+// Given a string, return a "rotated left 2" version where the first 2 chars are moved to the end. The string length will be at least 2.
+
+function left2(str) {
+  if (str.length < 2) {
+    return str;
+  } else {
+    return str.slice(2) + str.slice(0, 2);
+  }
+}
+
+// Given a string, return a "rotated right 2" version where the last 2 chars are moved to the start. The string length will be at least 2.
+
+function right2(str) {
+  if (str.length <= 2) {
+    return str;
+  } else {
+    return str.slice(-2) + str.slice(0, -2);
+  }
+}
+
+// Given a string, return a string length 1 from its front, unless front is false, in which case return a string length 1 from its back. The string will be non-empty.
+
+function theEnd(str, front) {
+  if (front === false) {
+    return str.slice(-1);
+  } else {
+    return str.slice(0, 1);
+  }
+}
+
+// Given a string, return a version without both the first and last char of the string. The string may be any length, including 0.
+
+function withoutEnd2(str) {
+  if (str.length <= 2) {
+    return '';
+  } else {
+    return str.slice(1, -1);
+  }
+}
+
+// Given a string of even length, return a string made of the middle two chars, so the string "string" yields "ri". The string length will be at least 2.
+let str = 'abcdefghij';
+
+function middleTwo(str) {
+  if (str.length < 2) {
+    return str;
+  } else if (str.length % 2 === 0) {
+    let middle = str.length / 2;
+    return str.charAt(middle - 1) + str.charAt(middle);
+  }
+}
+
+console.log(middleTwo(str));
