@@ -116,4 +116,60 @@ function middleTwo(str) {
   }
 }
 
-console.log(middleTwo(str));
+// Given a string, return true if it ends in "ly".
+
+function endsLy(str) {
+  if (str.slice(-2) === 'ly') {
+    return true;
+  }
+  return false;
+}
+
+// Given a string of odd length, return the string length 3 from its middle, so "Candy" yields "and". The string length will be at least 3.
+
+function middleThree(str) {
+  if (str.length <= 3) {
+    return str;
+  } else if (str.length % 2 !== 0) {
+    let middle = Math.floor(str.length / 2);
+    return str.charAt(middle - 1) + str.charAt(middle) + str.charAt(middle + 1);
+  } else if (str.length % 2 === 0) {
+    let middle2 = str.length / 2;
+    return str.charAt(middle2 - 1) + str.charAt(middle2);
+  }
+}
+
+// Given a string, return true if "bad" appears starting at index 0 or 1 in the string, such as with "badxxx" or "xbadxx" but not "xxbadxx". The string may be any length, including 0.
+
+function hasBad(str) {
+  if (str.slice(0, 3) === 'bad' || str.slice(1, 4) === 'bad') {
+    return true;
+  }
+  return false;
+}
+
+// Given a string, return a string length 2 made of its first 2 chars. If the string length is less than 2, use '@' for the missing chars.
+
+function atFirst(str) {
+  if (str.length === 0) {
+    return '@@';
+  } else if (str.length < 2) {
+    return str + '@';
+  } else {
+    return str.slice(0, 2);
+  }
+}
+
+// Given 2 strings, a and b, return a new string made of the first char of a and the last char of b, so "yo" and "java" yields "ya". If either string is length 0, use '@' for its missing char.
+
+function lastChars(a, b) {
+  if (a.length === 0 && b.length === 0) {
+    return '@@';
+  } else if (a.length === 0) {
+    return '@' + b.slice(-1);
+  } else if (b.length === 0) {
+    return a.slice(0, 1) + '@';
+  } else {
+    return a.slice(0, 1) + b.slice(-1);
+  }
+}
