@@ -173,3 +173,23 @@ function lastChars(a, b) {
     return a.slice(0, 1) + b.slice(-1);
   }
 }
+
+// Given two strings, append them together (known as "concatenation") and return the result. However, if the concatenation creates a double-char, then omit one of the chars, so "abc" and "cat" yields "abcat".
+
+function conCat(a, b) {
+  if (a.slice(-1) === b.slice(0, 1)) {
+    return a.slice(0, -1) + b;
+  } else {
+    return a + b;
+  }
+}
+
+// Given a string of any length, return a new string where the last 2 chars, if present, are swapped, so "coding" yields "codign".
+
+function lastTwo(str) {
+  if (str.length < 2) {
+    return str;
+  } else {
+    return str.slice(0, -2) + str.slice(-1) + str.slice(-2, -1);
+  }
+}
