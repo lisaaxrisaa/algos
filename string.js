@@ -193,3 +193,54 @@ function lastTwo(str) {
     return str.slice(0, -2) + str.slice(-1) + str.slice(-2, -1);
   }
 }
+
+// Given a string, if the string begins with "red" or "blue" return that color string, otherwise return the empty string.
+
+function seeColor(str) {
+  let result =
+    str.slice(0, 3) === 'red'
+      ? 'red'
+      : str.slice(0, 4) === 'blue'
+      ? 'blue'
+      : '';
+  return result;
+}
+
+// Given a string, return true if the first 2 chars in the string also appear at the end of the string, such as with "edited".
+
+function frontAgain(str) {
+  return str.length < 2
+    ? false
+    : str.slice(0, 2) === str.slice(-2)
+    ? true
+    : false;
+  return result;
+}
+
+// Given a string, return a new string made of 3 copies of the first 2 chars of the original string. The string may be any length. If there are fewer than 2 chars, use whatever is there.
+
+function extraFront(str) {
+  return str.length <= 1 ? str.repeat(3) : str.slice(0, 2).repeat(3);
+}
+
+// Given a string, if a length 2 substring appears at both its beginning and end, return a string without the substring at the beginning, so "HelloHe" yields "lloHe". The substring may overlap with itself, so "Hi" yields "". Otherwise, return the original string unchanged.
+
+function without2(str) {
+  return str.length <= 1
+    ? str
+    : str.slice(0, 2) === str.slice(-2)
+    ? str.slice(2)
+    : str;
+}
+
+// Given a string and a second "word" string, we'll say that the word matches the string if it appears at the front of the string, except its first char does not need to match exactly. On a match, return the front of the string, or otherwise return the empty string. So, so with the string "hippo" the word "hi" returns "hi" and "xip" returns "hip". The word will be at least length 1.
+
+function startWord(str, word) {
+  if (word.length <= 1) {
+    return str.slice(0, 1);
+  } else if (str.slice(1, word.length) === word.slice(1)) {
+    return str.substring(0, word.length);
+  } else {
+    return '';
+  }
+}
