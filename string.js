@@ -244,3 +244,31 @@ function startWord(str, word) {
     return '';
   }
 }
+
+// Given a string, if the first or last chars are 'x', return the string without those 'x' chars, and otherwise return the string unchanged.
+
+function withoutX(str) {
+  return str.slice(0, 1) !== 'x' && str.slice(-1) !== 'x'
+    ? str
+    : str.slice(0, 1) === 'x' && str.slice(-1) === 'x'
+    ? str.slice(1, -1)
+    : str.slice(0, 1) === 'x'
+    ? str.slice(1)
+    : str.slice(-1) === 'x'
+    ? str.slice(0, -1)
+    : str;
+}
+
+// Given a string, if one or both of the first 2 chars is 'x', return the string without those 'x' chars, and otherwise return the string unchanged. This is a little harder than it looks.
+
+function withoutX2(str) {
+  if (str.slice(0, 2) === 'xx') {
+    return str.slice(2);
+  } else if (str.slice(0, 1) === 'x') {
+    return str.slice(1);
+  } else if (str.slice(1, 2) === 'x') {
+    return str.slice(0, 1) + str.slice(2);
+  } else {
+    return str;
+  }
+}
