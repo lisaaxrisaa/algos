@@ -272,3 +272,22 @@ function withoutX2(str) {
     return str;
   }
 }
+
+// Given a string, return a string where for every char in the original, there are two chars.
+
+function doubleChar(str) {
+  const str1 = str.split('').map((element) => element.repeat(2));
+  return str1.join('');
+}
+
+// Return the number of times that the string "hi" appears anywhere in the given string.
+
+function countHi(str) {
+  let count = 0;
+  for (let i = 0; i < str.length - 1; i++) {
+    if (str[i] + str[i + 1] === 'hi') {
+      count++;
+    }
+  }
+  return count;
+}
