@@ -291,3 +291,41 @@ function countHi(str) {
   }
   return count;
 }
+
+// Return true if the string "cat" and "dog" appear the same number of times in the given string.
+
+function catDog(str) {
+  let catCount = (str.match(/cat/g) || []).length;
+  let dogCount = (str.match(/dog/g) || []).length;
+
+  return catCount === dogCount;
+}
+
+// Return the number of times that the string "code" appears anywhere in the given string, except we'll accept any letter for the 'd', so "cope" and "cooe" count.
+
+function countCode(str) {
+  let count = 0;
+  for (let i = 0; i < str.length - 3; i++) {
+    if (str.slice(i, i + 2) === 'co' && str[i + 3] === 'e') {
+      count++;
+    }
+  }
+  return count;
+}
+
+// Given two strings, return true if either of the strings appears at the very end of the other string, ignoring upper/lower case differences (in other words, the computation should not be "case sensitive"). Note: str.toLowerCase() returns the lowercase version of a string.
+
+function endOther(a, b) {
+  let stringA = a.toLowerCase();
+  let stringB = b.toLowerCase();
+  if (stringA.endsWith(stringB) || stringB.endsWith(stringA)) {
+    return true;
+  }
+  return false;
+}
+
+// Return true if the given string contains a "bob" string, but where the middle 'o' char can be any char.
+
+function bobThere(str) {
+  return str.match(/b.b/g) ? true : false;
+}
