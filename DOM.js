@@ -54,3 +54,62 @@ const init = () => {
 };
 
 init();
+
+// Create a button that says "Click Me". Below the button, display a number starting from 0. Every time the button is clicked, increment the number by 1.
+
+const init = () => {
+  const clickButton = document.createElement('button');
+  clickButton.textContent = 'Click Me';
+  const displayNum = document.createElement('p');
+  displayNum.textContent = 0;
+  document.body.append(clickButton, displayNum);
+
+  clickButton.addEventListener('click', () => {
+    displayNum.textContent = Number(displayNum.textContent) + 1;
+  });
+};
+
+init();
+
+// Create a button that, when clicked, toggles the visibility of a paragraph. If the paragraph is visible, it should become hidden, and if it is hidden, it should become visible.
+
+const init = () => {
+  const toggleButton = document.createElement('button');
+  toggleButton.textContent = 'Hide';
+  const para = document.createElement('p');
+  para.textContent = 'Show Text Here';
+  document.body.append(toggleButton, para);
+
+  toggleButton.addEventListener('click', () => {
+    if (toggleButton.textContent === 'Hide') {
+      para.style.display = 'none';
+      toggleButton.textContent = 'Show';
+    } else if (toggleButton.textContent === 'Show') {
+      para.style.display = 'block';
+      toggleButton.textContent = 'Hide';
+    }
+  });
+};
+
+init();
+
+// Create a "Toggle Dark Mode" button that changes the background color of the page between white and black, and changes the text color to the opposite.
+
+const init = () => {
+  const toggleLight = document.createElement('button');
+  toggleLight.innerText = 'Toggle Light Mode';
+  document.body.style.backgroundColor = 'black';
+  document.body.append(toggleLight);
+
+  toggleLight.addEventListener('click', () => {
+    if (document.body.style.backgroundColor === 'black') {
+      document.body.style.backgroundColor = 'white';
+      toggleLight.innerText = 'Toggle Dark Mode';
+    } else {
+      document.body.style.backgroundColor = 'black';
+      toggleLight.innerText = 'Toggle Light Mode';
+    }
+  });
+};
+
+init();

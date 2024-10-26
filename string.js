@@ -329,3 +329,49 @@ function endOther(a, b) {
 function bobThere(str) {
   return str.match(/b.b/g) ? true : false;
 }
+
+// Given two strings, a and b, create a bigger string made of the first char of a, the first char of b, the second char of a, the second char of b, and so on. Any leftover chars go at the end of the result.
+
+function mixString(a, b) {
+  let results = '';
+  for (let i = 0; i < Math.max(a.length, b.length); i++) {
+    if (a[i]) results += a[i];
+    if (b[i]) results += b[i];
+  }
+  return results;
+}
+
+// Given a string and an int n, return a string made of n repetitions of the last n characters of the string. You may assume that n is between 0 and the length of the string, inclusive.
+
+function repeatEnd(str, n) {
+  return str.slice(-n).repeat(n);
+}
+
+// Given a string and an int n, return a string made of the first n characters of the string, followed by the first n-1 characters of the string, and so on. You may assume that n is between 0 and the length of the string, inclusive (i.e. n >= 0 and n <= str.length()).
+
+function repeatFront(str, n) {
+  let result = '';
+  for (let i = n; i > 0; i--) {
+    result += str.slice(0, i);
+  }
+  return result;
+}
+
+// Given two strings, word and a separator sep, return a big string made of count occurrences of the word, separated by the separator string.
+
+function repeatSeparator(word, sep, count) {
+  if (count === 0) {
+    return '';
+  }
+  if (count === 1) {
+    return word;
+  }
+
+  let result = '';
+  for (let i = 0; i < count - 1; i++) {
+    result += word + sep;
+  }
+  result += word;
+
+  return result;
+}
