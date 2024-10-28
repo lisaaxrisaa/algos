@@ -375,3 +375,39 @@ function repeatSeparator(word, sep, count) {
 
   return result;
 }
+
+// Given a string, consider the prefix string made of the first N chars of the string. Does that prefix string appear somewhere else in the string? Assume that the string is not empty and that N is in the range 1..str.length().
+
+function prefixAgain(str, n) {
+  const prefix = str.slice(0, n);
+  for (let i = n; i <= str.length - n; i++) {
+    if (prefix === str.slice(i, i + n)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Given a string, compute a new string by moving the first char to come after the next two chars, so "abc" yields "bca". Repeat this process for each subsequent group of 3 chars, so "abcdef" yields "bcaefd". Ignore any group of fewer than 3 chars at the end.
+
+function oneTwo(str) {
+  let result = '';
+  for (let i = 0; i <= str.length - 3; i += 3) {
+    result += str.slice(i + 1, i + 3) + str[i];
+  }
+  return result;
+}
+
+// Look for patterns like "zip" and "zap" in the string -- length-3, starting with 'z' and ending with 'p'. Return a string where for all such words, the middle letter is gone, so "zipXzap" yields "zpXzp".
+
+function zipZap(str) {
+  return str.replace(/z.p/g, (match) => {
+    return match[0] + match[2];
+  });
+}
+
+// Return a version of the given string, where for every star (*) in the string the star and the chars immediately to its left and right are gone. So "ab*cd" yields "ad" and "ab**cd" also yields "ad".
+
+function starOut(str) {
+  return str.replace(/.?\*+.?/g, '');
+}
