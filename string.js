@@ -411,3 +411,28 @@ function zipZap(str) {
 function starOut(str) {
   return str.replace(/.?\*+.?/g, '');
 }
+
+// Given a string and a non-empty word string, return a version of the original String where all chars have been replaced by pluses ("+"), except for appearances of the word string which are preserved unchanged.
+
+function plusOut(str, word) {
+  let parts = str.split(word);
+  for (let i = 0; i < parts.length; i++) {
+    parts[i] = '+'.repeat(parts[i].length);
+  }
+  return parts.join(word);
+}
+
+// Given two strings, base and remove, return a version of the base string where all instances of the remove string have been removed (not case sensitive). You may assume that the remove string is length 1 or more. Remove only non-overlapping instances, so with "xxx" removing "xx" leaves "x".
+
+function withoutString(base, remove) {
+  const regex = new RegExp(remove, 'gi');
+  return base.replace(regex, '');
+}
+
+// Given a string, return true if the number of appearances of "is" anywhere in the string is equal to the number of appearances of "not" anywhere in the string (case sensitive).
+
+function equalIsNot(str) {
+  const isCount = (str.match(/is/g) || []).length;
+  const notCount = (str.match(/not/g) || []).length;
+  return isCount === notCount;
+}
