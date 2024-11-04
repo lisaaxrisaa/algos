@@ -436,3 +436,28 @@ function equalIsNot(str) {
   const notCount = (str.match(/not/g) || []).length;
   return isCount === notCount;
 }
+
+// We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right. Return true if all the g's in the given string are happy.
+
+function gHappy(str) {
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === 'g') {
+      if (str[i - 1] !== 'g' && str[i + 1] !== 'g') {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+// We'll say that a "triple" in a string is a char appearing three times in a row. Return the number of triples in the given string. The triples may overlap.
+
+function countTriple(str) {
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === str[i - 1] && str[i] === str[i + 1]) {
+      count++;
+    }
+  }
+  return count;
+}
