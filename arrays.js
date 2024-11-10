@@ -1,3 +1,30 @@
+// The parameter weekday is true if it is a weekday, and the parameter vacation is true if we are on vacation. We sleep in if it is not a weekday or we're on vacation. Return true if we sleep in.
+
+function sleepIn(weekday, vacation) {
+  if (!weekday || vacation) {
+    return true;
+  }
+  return false;
+}
+
+// We have two monkeys, a and b, and the parameters aSmile and bSmile indicate if each is smiling. We are in trouble if they are both smiling or if neither of them is smiling. Return true if we are in trouble.
+
+function monkeyTrouble(aSmile, bSmile) {
+  if ((aSmile && bSmile) || (!aSmile && !bSmile)) {
+    return true;
+  }
+  return false;
+}
+
+// Given two int values, return their sum. Unless the two values are the same, then return double their sum.
+
+function sumDouble(a, b) {
+  if (a === b) {
+    return (a + b) * 2;
+  }
+  return a + b;
+}
+
 // Given 2 strings, a and b, return the number of the positions where they contain
 // the same length 2 substring. So "xxcaazz" and "xxbaaz" yields 3, since the "xx"
 // "xx", "aa", and "az" substrings appear in the same place in both strings.

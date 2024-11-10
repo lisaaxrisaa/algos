@@ -461,3 +461,32 @@ function countTriple(str) {
   }
   return count;
 }
+
+//Given a string, return the sum of the digits 0-9 that appear in the string, ignoring all other characters. Return 0 if there are no digits in the string. (Note: Character.isDigit(char) tests if a char is one of the chars '0', '1', .. '9'. Integer.parseInt(string) converts a string to an int.)
+
+function sumDigits(str) {
+  let sum = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (!isNaN(str[i])) {
+      sum += parseInt(str[i]);
+    }
+  }
+  return sum;
+}
+
+// Given a string, return the longest substring that appears at both the beginning and end of the string without overlapping. For example, sameEnds("abXab") is "ab".
+
+function sameEnds(str) {
+  let maxLength = Math.floor(str.length / 2);
+  for (let i = 1; i <= maxLength; i++) {
+    let startString = str.slice(0, i);
+    let endString = str.slice(-i);
+    if (startString === endString) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+console.log(sameEnds('abcb'));
