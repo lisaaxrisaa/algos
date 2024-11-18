@@ -314,6 +314,19 @@ function max1020(a, b){
     return 0;
   }
   
+
+//   Given two non-negative int values, return true if they have the same last digit, such as with 27 and 57. Note that the % 'mod' operator computes remainders, so 17 % 10 is 7.
+
+// Examples
+
+// lastDigit(7, 17) → true
+// lastDigit(6, 17) → false
+// lastDigit(3, 113) → true
+
+function lastDigit(a, b){
+  return a % 10 === b % 10;
+}
+
 // Given 2 strings, a and b, return the number of the positions where they contain
 // the same length 2 substring. So "xxcaazz" and "xxbaaz" yields 3, since the "xx"
 // "xx", "aa", and "az" substrings appear in the same place in both strings.
