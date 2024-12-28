@@ -583,3 +583,13 @@ function stringBits(str) {
   }
   return result;
 }
+
+// Given a non-empty string like "Code" return a string like "CCoCodCode"
+
+function stringSplosion(str) {
+  let result = '';
+  for (let i = 0; i < str.length; i++) {
+    result += str.slice(0, i + 1);
+  }
+  return result;
+}
