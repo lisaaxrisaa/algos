@@ -653,3 +653,28 @@ function mirrorEnds(string) {
   }
   return result;
 }
+
+// Given a string, return the length of the largest "block" in the string. A block is a run of adjacent chars that are the same.
+
+// Examples
+
+// maxBlock('hoopla') → 2
+// maxBlock('abbCCCddBBBxx') → 3
+// maxBlock('') → 0
+
+function maxBlock(str) {
+  if (str.length === 0) return 0;
+
+  let maxCount = 1;
+  let currentCount = 1;
+
+  for (let i = 0; i < str.length - 1; i++) {
+    if (str[i] === str[i + 1]) {
+      currentCount++;
+    } else {
+      maxCount = Math.max(maxCount, currentCount);
+      currentCount = 1;
+    }
+  }
+  return Math.max(maxCount, currentCount);
+}
