@@ -61,6 +61,8 @@ function squirrelPlay(temp, isSummer) {
   return temp >= 60 && temp <= upperLimit;
 }
 
+// ------------------------------------------------------
+
 // You are driving a little too fast, and a police officer stops you. Write code to compute the result, encoded as an int value: 0=no ticket, 1=small ticket, 2=big ticket. If speed is 60 or less, the result is 0. If speed is between 61 and 80 inclusive, the result is 1. If speed is 81 or more, the result is 2. Unless it is your birthday -- on that day, your speed can be 5 higher in all cases.
 
 // Examples
@@ -68,6 +70,14 @@ function squirrelPlay(temp, isSummer) {
 // caughtSpeeding(60, false) → 0
 // caughtSpeeding(65, false) → 1
 // caughtSpeeding(65, true) → 0
+
+/**
+ * Determines the type of ticket based on speed and birthday conditions.
+ * - If `speed` is within the limit, returns 0 (no ticket).
+ * - If `speed` is within the small ticket range, returns 1.
+ * - If `speed` exceeds the small ticket limit, returns 2 (big ticket).
+ * - On birthdays, the speed limits are increased by 5.
+ */
 
 function caughtSpeeding(speed, isBirthday) {
   let speedLimit = isBirthday ? 65 : 60;
@@ -81,3 +91,5 @@ function caughtSpeeding(speed, isBirthday) {
     return 2;
   }
 }
+
+// ------------------------------------------------------

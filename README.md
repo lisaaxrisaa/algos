@@ -21,14 +21,16 @@ Each problem includes:
 
 You can browse through different problems and solutions in the `problems/` directory. If you'd like to run a solution:
 
-1. Clone the repository:
+## 🛠️ How to Use
+
+You can browse through different problems and solutions inside the `ALGO_PRACTICE/` folder.  
+Each file focuses on a different concept, such as **arrays, logic, objects, and strings**.
+
+### Run a JavaScript File Locally
+
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/yourusername/coding-practice.git
-   ```
-2. Navigate into the repository:
-
-   ```bash
-   cd coding-practice
    ```
 
 ## 🏆 Why This Repository?
@@ -40,7 +42,7 @@ You can browse through different problems and solutions in the `problems/` direc
 
 ## 📚 Resources I Use
 
-Some of my go-to resources for coding challenges:
+Some of my go-to resources for coding challenges: <br>
 [CodingJS](https://the-winter.github.io/codingjs/) <br>
 [NeetCode](https://neetcode.io/) <br>
 
