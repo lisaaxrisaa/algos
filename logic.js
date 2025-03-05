@@ -93,3 +93,58 @@ function caughtSpeeding(speed, isBirthday) {
 }
 
 // ------------------------------------------------------
+
+// Given 2 ints, a and b, return their sum. However, sums in the range 10..19 inclusive, are forbidden, so in that case just return 20.
+
+// Examples
+
+// sortaSum(3, 4) → 7
+// sortaSum(9, 4) → 20
+// sortaSum(10, 11) → 21
+
+// * sortaSum - Returns the sum of two integers, except:
+// * - If the sum falls within the range 10..19 (inclusive), return 20 instead.
+// * - Otherwise, return the actual sum.
+// * @param {number} a - First integer
+// * @param {number} b - Second integer
+// * @returns {number} - Adjusted sum based on the given conditions
+
+function sortaSum(a, b) {
+  const sum = a + b;
+  if (sum >= 10 && sum <= 19) {
+    return 20;
+  }
+  return sum;
+}
+
+// ------------------------------------------------------
+
+// Given a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a boolean indicating if we are on vacation, return a string of the form "7:00" indicating when the alarm clock should ring. Weekdays, the alarm should be "7:00" and on the weekend it should be "10:00". Unless we are on vacation -- then on weekdays it should be "10:00" and weekends it should be "off".
+
+// Examples
+
+// alarmClock(1, false) → 7:00
+// alarmClock(5, false) → 7:00
+// alarmClock(0, false) → 10:00
+
+// * - Weekdays (Mon-Fri, encoded as 1-5):
+// *   - If not on vacation → Alarm rings at "7:00".
+// *   - If on vacation → Alarm rings at "10:00".
+// * - Weekends (Sat-Sun, encoded as 0 or 6):
+// *   - If not on vacation → Alarm rings at "10:00".
+// *   - If on vacation → Alarm is "off".
+// *
+// * @param {number} day - The day of the week (0 = Sun, 1 = Mon, ..., 6 = Sat)
+// * @param {boolean} vacation - Whether the user is on vacation
+// * @returns {string} - The time the alarm should ring or "off" if no alarm
+
+function alarmClock(day, vacation) {
+  if (day >= 1 && day <= 5) {
+    return vacation ? '10:00' : '7:00';
+  } else {
+    // Weekends (Sat, Sun)
+    return vacation ? 'off' : '10:00';
+  }
+}
+
+// ------------------------------------------------------
