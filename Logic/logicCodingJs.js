@@ -1,3 +1,5 @@
+// The below are logic problems found in https://the-winter.github.io/codingjs/
+
 // When squirrels get together for a party, they like to have cigars. A squirrel party is successful when the number of cigars is between 40 and 60, inclusive. Unless it is the weekend, in which case there is no upper bound on the number of cigars. Return true if the party with the given values is successful, or false otherwise.
 
 // Examples
@@ -145,6 +147,34 @@ function alarmClock(day, vacation) {
     // Weekends (Sat, Sun)
     return vacation ? 'off' : '10:00';
   }
+}
+
+// ------------------------------------------------------
+
+// The number 6 is a truly great number. Given two int values, a and b, return true if either one is 6. Or if their sum or difference is 6. Note: the function Math.abs(num) computes the absolute value of a number.
+
+// Examples
+
+// love6(6, 4) → true
+// love6(4, 5) → false
+// love6(1, 5) → true
+
+// * love6 - Determines if the number 6 is "special" in the given conditions.
+// *
+// * The function returns `true` if:
+// * - Either `a` or `b` is `6`
+// * - Their sum equals `6`
+// * - Their absolute difference equals `6`
+// * Otherwise, it returns `false`.
+// *
+// * @param {number} a - First integer
+// * @param {number} b - Second integer
+// * @returns {boolean} - `true` if any of the conditions are met, otherwise `false`
+
+function love6(a, b) {
+  return a + b === 6 || Math.abs(a - b) === 6 || a === 6 || b === 6
+    ? true
+    : false;
 }
 
 // ------------------------------------------------------

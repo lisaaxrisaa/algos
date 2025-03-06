@@ -415,6 +415,8 @@ function array667(nums) {
   return count;
 }
 
+// ---------------------------------------------------------
+
 // Given an array of ints, we'll say that a triple is a value appearing 3 times in a row in the array. Return true if the array does not contain any triples.
 
 function noTriples(nums) {
@@ -427,6 +429,8 @@ function noTriples(nums) {
   }
   return true;
 }
+
+// ---------------------------------------------------------
 
 // Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
 
@@ -446,6 +450,8 @@ class Solution {
   }
 }
 
+// ---------------------------------------------------------
+
 // Given an array of ints, return true if one of the first 4 elements in the array is a 9. The array length may be less than 4.
 
 // Examples
@@ -464,6 +470,8 @@ function arrayFront9(nums) {
   return false; 
 }
 
+// ---------------------------------------------------------
+
 // Given an array of ints, return true if the sequence of numbers 1, 2, 3 appears in the array somewhere.
 
 function array123(nums){
@@ -476,146 +484,3 @@ return false;
 
 }
 
-// Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
-
-// Example 1:
-
-// Input: nums = [1, 2, 3, 3]
-
-// Output: true
-
-// Example 2:
-
-// Input: nums = [1, 2, 3, 4]
-
-// Output: false
-
-class Solution {
-  /**
-   * @param {number[]} nums
-   * @return {boolean}
-   */
-  hasDuplicate(nums) {
-      nums.sort((a,b) => a - b);
-      for(let i = 0; i < nums.length; i++) {
-          if (nums[i] === nums[i + 1]) {
-              return true;
-          }
-      }
-      return false;
-}
-}
-
-// Given two strings s and t, return true if the two strings are anagrams of each other, otherwise return false.
-
-// An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
-
-// Example 1:
-
-// Input: s = "racecar", t = "carrace"
-
-// Output: true
-// Example 2:
-
-// Input: s = "jar", t = "jam"
-
-// Output: false
-
-class Solution {
-  /**
-   * @param {string} s
-   * @param {string} t
-   * @return {boolean}
-   */
-  isAnagram(s, t) {
-      let sArray = s.split('').sort().join('');
-      let tArray = t.split('').sort().join('');
-      if(sArray === tArray) {
-          return true;
-      }
-      return false;
-  }
-}
-
-// Given an array of integers nums and an integer target, return the indices i and j such that nums[i] + nums[j] == target and i != j.
-
-// You may assume that every input has exactly one pair of indices i and j that satisfy the condition.
-
-// Return the answer with the smaller index first.
-
-// Example 1:
-
-// Input: 
-// nums = [3,4,5,6], target = 7
-
-// Output: [0,1]
-// Explanation: nums[0] + nums[1] == 7, so we return [0, 1].
-
-// Example 2:
-
-// Input: nums = [4,5,6], target = 10
-
-// Output: [0,2]
-// Example 3:
-
-// Input: nums = [5,5], target = 10
-
-// Output: [0,1]
-
-class Solution {
-    /**
-     * @param {number[]} nums
-     * @param {number} target
-     * @return {number[]}
-     */
-    twoSum(nums, target) {
-        for (let i = 0; i < nums.length; i++) {
-        for (let j = i + 1; j < nums.length; j++) {
-            if (nums[i] + nums[j] === target) {
-                 return [i, j]
-            }
-        }
-        } 
-        return [];
-    }
-}
-
-
-// Given an array of strings strs, group all anagrams together into sublists. You may return the output in any order.
-
-// An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
-
-// Example 1:
-
-// Input: strs = ["act","pots","tops","cat","stop","hat"]
-
-// Output: [["hat"],["act", "cat"],["stop", "pots", "tops"]]
-// Example 2:
-
-// Input: strs = ["x"]
-
-// Output: [["x"]]
-// Example 3:
-
-// Input: strs = [""]
-
-// Output: [[""]]
-
-class Solution {
-  /**
-   * @param {string[]} strs
-   * @return {string[][]}
-   */
-  groupAnagrams(strs) {
-      let map = new Map ();
-
-      for (let str of strs) {
-          let sortedStr = str.split('').sort().join('');
-          if(!map.has(sortedStr)) {
-              map.set(sortedStr, []);
-          }
-          map.get(sortedStr).push(str);
-      }
-      return Array.from(map.values());
-  }
-}
