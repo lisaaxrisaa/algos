@@ -45,6 +45,7 @@ Each file focuses on a different concept, such as **arrays, logic, objects, and 
 Some of my go-to resources for coding challenges: <br>
 [CodingJS](https://the-winter.github.io/codingjs/) <br>
 [NeetCode](https://neetcode.io/) <br>
+[LeetCode](https://leetcode.com/)<br>
 
 ## 🤝 Contributing
 
