@@ -205,3 +205,41 @@ function in1To10(n, outsideMode) {
 }
 
 // ------------------------------------------------------
+
+// We'll say a number is special if it is a multiple of 11 or if it is one more than a multiple of 11. Return true if the given non-negative number is special. Use the % "mod" operator.
+
+// Examples
+// specialEleven(22) → true
+// specialEleven(23) → true
+// specialEleven(24) → false
+
+// * Approach:
+// * - Use the modulus operator `%` to check divisibility by 11.
+// * - Return `true` if `n % 11` is `0` or `1`, otherwise return `false`.
+// * - The function runs in **O(1) time** and **O(1) space**, as it performs only
+// *   a few mathematical operations and does not use extra memory.
+
+function specialEleven(n) {
+  return n % 11 === 0 || n % 11 === 1;
+}
+
+// ------------------------------------------------------
+
+// Return true if the given non-negative number is 1 or 2 more than a multiple of 20.
+
+// Examples
+// more20(20) → false
+// more20(21) → true
+// more20(22) → true
+
+// * Approach:
+// * - Use the modulus operator `%` to check divisibility by 20.
+// * - Return `true` if `n % 20` is `1` or `2`, otherwise return `false`.
+// * - The function runs in **O(1) time** and **O(1) space**, as it performs only
+// *   a few mathematical operations and does not use extra memory.
+
+function more20(n) {
+  return n % 20 === 1 || n % 20 === 2;
+}
+
+// ------------------------------------------------------
