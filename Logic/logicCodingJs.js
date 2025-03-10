@@ -243,3 +243,63 @@ function more20(n) {
 }
 
 // ------------------------------------------------------
+
+// Return true if the given non-negative number is a multiple of 3 or 5, but not both. Use the % "mod" operator.
+
+// Examples
+// old35(3) → true
+// old35(10) → true
+// old35(15) → false
+
+// * Approach:
+// * - First, check if `n` is a multiple of both 3 and 5 (`n % 3 === 0 && n % 5 === 0`).
+// *   - If true, return `false` immediately.
+// * - Otherwise, check if `n` is a multiple of either 3 OR 5.
+// *   - If true, return `true`.
+// * - If neither condition is met, return `false`.
+
+function old35(n) {
+  if (n % 3 === 0 && n % 5 === 0) {
+    return false;
+  } else if (n % 3 === 0 || n % 5 === 0) {
+    return true;
+  }
+  return false;
+}
+
+// OR
+
+function old35(n) {
+  return (n % 3 === 0 || n % 5 === 0) && !(n % 3 === 0 && n % 5 === 0);
+}
+
+// ------------------------------------------------------
+
+// Return true if the given non-negative number is 1 or 2 less than a multiple of 20. So for example 38 and 39 return true, but 40 returns false.
+
+// Examples
+// less20(18) → true
+// less20(19) → true
+// less20(20) → false
+
+// * - The modulus operator `%` is used to check the remainder when `n` is divided by 20.
+// * - If `n` is exactly 1 or 2 less than a multiple of 20, it will leave a remainder of 19 or 18.
+// * - Examples:
+// *    - 18 % 20 = 18  ✅ (True)
+// *    - 19 % 20 = 19  ✅ (True)
+// *    - 20 % 20 = 0   ❌ (False)
+// *    - 38 % 20 = 18  ✅ (True)
+// *    - 39 % 20 = 19  ✅ (True)
+// *    - 40 % 20 = 0   ❌ (False)
+// *    - 89 % 20 = 9   ❌ (False)
+
+function less20(n) {
+  if (n % 20 === 0) {
+    return false;
+  } else if (n % 20 === 18 || n % 20 === 19) {
+    return true;
+  }
+  return false;
+}
+
+// ------------------------------------------------------
