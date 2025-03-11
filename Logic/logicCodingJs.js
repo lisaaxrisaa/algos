@@ -285,13 +285,13 @@ function old35(n) {
 // * - The modulus operator `%` is used to check the remainder when `n` is divided by 20.
 // * - If `n` is exactly 1 or 2 less than a multiple of 20, it will leave a remainder of 19 or 18.
 // * - Examples:
-// *    - 18 % 20 = 18  ✅ (True)
-// *    - 19 % 20 = 19  ✅ (True)
-// *    - 20 % 20 = 0   ❌ (False)
-// *    - 38 % 20 = 18  ✅ (True)
-// *    - 39 % 20 = 19  ✅ (True)
-// *    - 40 % 20 = 0   ❌ (False)
-// *    - 89 % 20 = 9   ❌ (False)
+// *    - 18 % 20 = 18  (True)
+// *    - 19 % 20 = 19  (True)
+// *    - 20 % 20 = 0   (False)
+// *    - 38 % 20 = 18  (True)
+// *    - 39 % 20 = 19  (True)
+// *    - 40 % 20 = 0   (False)
+// *    - 89 % 20 = 9   (False)
 
 function less20(n) {
   if (n % 20 === 0) {
@@ -303,3 +303,33 @@ function less20(n) {
 }
 
 // ------------------------------------------------------
+
+// Given a non-negative number "num", return true if num is within 2 of a multiple of 10. Note: (a % b) is the remainder of dividing a by b, so (7 % 5) is 2.
+
+// Examples
+// nearTen(12) → true
+// nearTen(17) → false
+// nearTen(19) → true
+
+// Find the remainder when num is divided by 10.
+// This tells us how far num is from the nearest lower multiple of 10.
+// If remainder is:
+// - 0 → num is exactly a multiple of 10
+// - 1 → num is 1 above a multiple of 10
+// - 2 → num is 2 above a multiple of 10
+// - 8 → num is 2 below the next multiple of 10
+// - 9 → num is 1 below the next multiple of 10
+// These cases mean num is "within 2" of a multiple of 10.
+
+function nearTen(num) {
+  if (
+    num % 10 === 0 ||
+    num % 10 === 1 ||
+    num % 10 === 2 ||
+    num % 10 === 8 ||
+    num % 10 === 9
+  ) {
+    return true;
+  }
+  return false;
+}

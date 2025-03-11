@@ -203,3 +203,28 @@ var intersection = function (nums1, nums2) {
 // Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
 // Output: [4,9]
 // Explanation: [9,4] is also accepted.
+
+var intersect = function (nums1, nums2) {
+  let map = {}; // Create a hashmap to store occurrences of nums1 elements
+  // Loop through nums1 and count occurrences of each number
+  for (let num of nums1) {
+    if (map[num] !== undefined) {
+      // If the number already exists in the map, increment its count
+      map[num] = map[num] + 1;
+    } else {
+      // Otherwise, initialize its count to 1
+      map[num] = 1;
+    }
+  }
+
+  let result = []; // Create an array to store the intersection values
+  // Loop through nums2 and check if each number exists in map
+  for (let num of nums2) {
+    if (map[num] > 0) {
+      // If the number exists in map and count is greater than 0:
+      result.push(num); //  Add the number to the result array (intersection found)
+      map[num]--; //  Decrement the count to prevent over-counting duplicates
+    }
+  }
+  return result; //  Return the final intersection array
+};
