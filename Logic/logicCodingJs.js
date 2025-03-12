@@ -333,3 +333,57 @@ function nearTen(num) {
   }
   return false;
 }
+
+// ------------------------------------------------------
+// Given 2 ints, a and b, return their sum. However, "teen" values in the range 13..19 inclusive, are extra lucky. So if either value is a teen, just return 19.
+
+// Examples
+// teenSum(3, 4) → 7
+// teenSum(10, 13) → 19
+// teenSum(13, 2) → 19
+
+function teenSum(a, b) {
+  // Check if either number is in the "teen" range (13 to 19 inclusive)
+  if ((a >= 13 && a <= 19) || (b >= 13 && b <= 19)) {
+    return 19; // If either number is a teen, return 19 as per the problem statement
+  }
+  // Otherwise, return the sum of a and b
+  return a + b;
+}
+
+// ------------------------------------------------------
+
+// Your cell phone rings. Return true if you should answer it. Normally you answer, except in the morning you only answer if it is your mom calling. In all cases, if you are asleep, you do not answer.
+
+// Examples
+// answerCell(false, false, false) → true
+// answerCell(false, false, true) → false
+// answerCell(true, false, false) → false
+
+function answerCell(isMorning, isMom, isAsleep) {
+  // Answer the call if:
+  // - It's NOT morning, NOT mom, and NOT asleep (normal case)
+  // - OR it's morning, but Mom is calling, and you're NOT asleep
+  // - OR it's NOT morning, and Mom is calling, and you're NOT asleep
+  if (
+    (!isMorning && !isMom && !isAsleep) ||
+    (isMorning && isMom && !isAsleep) ||
+    (!isMorning && isMom && !isAsleep)
+  ) {
+    return true;
+  }
+  // If none of the above conditions are met, do not answer the phone
+  return false;
+}
+
+// OR
+
+function answerCell(isMorning, isMom, isAsleep) {
+  // If asleep, never answer the phone
+  if (isAsleep) return false;
+
+  // Answer the phone if:
+  // - It's NOT morning (doesn't matter who is calling)
+  // - OR it's morning, but Mom is calling
+  return !isMorning || isMom;
+}
