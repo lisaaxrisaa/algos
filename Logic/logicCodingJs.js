@@ -449,3 +449,27 @@ function twoAsOne(a, b, c) {
   // Check if the sum of any two numbers equals the third number
   return a + b === c || b + c === a || a + c === b;
 }
+
+// ------------------------------------------------------
+
+// Given three ints, a b c, return true if b is greater than a, and c is greater than b. However, with the exception that if "bOk" is true, b does not need to be greater than a.
+
+// Examples
+// inOrder(1, 2, 4, false) → true
+// inOrder(1, 2, 1, false) → false
+// inOrder(1, 1, 2, true) → true
+
+//  Check if three numbers are in increasing order.
+//  Normally, return true if b > a and c > b.
+//  If bOk is true, skip checking b > a, only check c > b.
+//  Uses simple conditional logic for clarity and efficiency.
+
+function inOrder(a, b, c, bOk) {
+  if (bOk) {
+    return c > b;
+  } else {
+    return b > a && c > b;
+  }
+}
+
+// ------------------------------------------------------
