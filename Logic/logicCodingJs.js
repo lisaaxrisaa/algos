@@ -493,3 +493,5 @@ function inOrderEqual(a, b, c, equalOk) {
     return a < b && b < c;
   }
 }
+
+// ------------------------------------------------------
