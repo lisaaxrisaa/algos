@@ -495,3 +495,27 @@ function inOrderEqual(a, b, c, equalOk) {
 }
 
 // ------------------------------------------------------
+
+// Given two int values, return whichever value is larger. However if the two values have the same remainder when divided by 5, then the return the smaller value. However, in all cases, if the two values are the same, return 0. Note: the % "mod" operator computes the remainder, e.g. 7 % 5 is 2.
+
+// Examples
+// maxMod5(2, 3) → 3
+// maxMod5(6, 2) → 6
+// maxMod5(3, 2) → 3
+
+// Returns the larger of two values, unless both values have the same remainder when divided by 5.
+// If the remainders match, returns the smaller value instead.
+// If both values are equal, returns 0.
+
+function maxMod5(a, b) {
+  if (a === b) {
+    return 0;
+  } else if (a % 5 === b % 5) {
+    return a > b ? b : a;
+  } else if (a > b) {
+    return a;
+  }
+  return b;
+}
+
+// ------------------------------------------------------
