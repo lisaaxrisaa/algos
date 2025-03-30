@@ -107,3 +107,56 @@ var longestCommonPrefix = function (strs) {
 
   return prefix;
 };
+
+// ------------------------------------------------------
+
+// The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
+
+// countAndSay(1) = "1"
+// countAndSay(n) is the run-length encoding of countAndSay(n - 1).
+// Run-length encoding (RLE) is a string compression method that works by replacing consecutive identical characters (repeated 2 or more times) with the concatenation of the character and the number marking the count of the characters (length of the run). For example, to compress the string "3322251" we replace "33" with "23", replace "222" with "32", replace "5" with "15" and replace "1" with "11". Thus the compressed string becomes "23321511".
+
+// Given a positive integer n, return the nth element of the count-and-say sequence.
+
+// Example 1:
+// Input: n = 4
+// Output: "1211"
+// Explanation:
+// countAndSay(1) = "1"
+// countAndSay(2) = RLE of "1" = "11"
+// countAndSay(3) = RLE of "11" = "21"
+// countAndSay(4) = RLE of "21" = "1211"
+
+// Example 2:
+// Input: n = 1
+// Output: "1"
+// Explanation:
+// This is the base case.
+
+// Start with the base case of the sequence: "1"
+let result = '1';
+
+// Repeat the transformation process (n - 1) times
+for (let i = 1; i < n; i++) {
+  let next = ''; // Temporary string to build the next term
+  let count = 1; // Start counting from the first digit
+
+  // Loop through the current result string, starting at index 1
+  for (let j = 1; j <= result.length; j++) {
+    // If the current character matches the previous one, increment the count
+    if (result[j] === result[j - 1]) {
+      count++;
+    } else {
+      // If characters differ or end of string is reached,
+      // append the count and the digit we were counting
+      next += count + result[j - 1];
+      count = 1; // Reset count for the new digit
+    }
+  }
+
+  // Update result to be the newly built string
+  result = next;
+}
+
+// Return the final term in the sequence
+return result;
