@@ -303,3 +303,114 @@ while (stack.length > 0) {
 }
 // Build the final result by mapping each value in nums1 to its next greater
 return nums1.map((num) => map[num]);
+
+// ---------------------------------------------------------
+
+// Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
+
+// The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
+
+// You must write an algorithm that runs in O(n) time and without using the division operation.
+
+// Example 1:
+// Input: nums = [1,2,3,4]
+// Output: [24,12,8,6]
+
+// Example 2:
+// Input: nums = [-1,1,0,-3,3]
+// Output: [0,0,9,0,0]
+
+var productExceptSelf = function (nums) {
+  let left = []; // Holds product of all elements to the left of index i
+  let right = []; // Holds product of all elements to the right of index i
+  let result = []; // Final result array: product of left[i] * right[i]
+
+  // Initialize the first value of left to 1 (no elements to the left of index 0)
+  left[0] = 1;
+  for (let i = 1; i < nums.length; i++) {
+    // Each left[i] is the product of nums[i - 1] and the accumulated product so far
+    left[i] = nums[i - 1] * left[i - 1];
+  }
+
+  // Initialize the last value of right to 1 (no elements to the right of the last index)
+  right[nums.length - 1] = 1;
+  for (let i = nums.length - 2; i >= 0; i--) {
+    // Each right[i] is the product of nums[i + 1] and the accumulated product from the right
+    right[i] = nums[i + 1] * right[i + 1];
+  }
+
+  // Combine left and right products to get the final result for each index
+  for (let i = 0; i < nums.length; i++) {
+    result[i] = left[i] * right[i];
+  }
+
+  return result;
+};
+
+// ---------------------------------------------------------
+
+// Given an array of integers nums, calculate the pivot index of this array.
+
+// The pivot index is the index where the sum of all the numbers strictly to the left of the index is equal to the sum of all the numbers strictly to the index's right.
+
+// If the index is on the left edge of the array, then the left sum is 0 because there are no elements to the left. This also applies to the right edge of the array.
+
+// Return the leftmost pivot index. If no such index exists, return -1.
+
+// Example 1:
+// Input: nums = [1,7,3,6,5,6]
+// Output: 3
+// Explanation:
+// The pivot index is 3.
+// Left sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11
+// Right sum = nums[4] + nums[5] = 5 + 6 = 11
+
+// Example 2:
+// Input: nums = [1,2,3]
+// Output: -1
+// Explanation:
+// There is no index that satisfies the conditions in the problem statement.
+
+// Example 3:
+// Input: nums = [2,1,-1]
+// Output: 0
+// Explanation:
+// The pivot index is 0.
+// Left sum = 0 (no elements to the left of index 0)
+// Right sum = nums[1] + nums[2] = 1 + -1 = 0
+
+/**
+ * Function to find the pivot index in an array.
+ * The pivot index is the index where the sum of all numbers to the left
+ * is equal to the sum of all numbers to the right.
+ *
+ * @param {number[]} nums - The input array of integers.
+ * @returns {number} - The leftmost pivot index, or -1 if no pivot index is found.
+ */
+var findPivotIndex = function (nums) {
+  // Step 1: Calculate the total sum of the array.
+  let sum = 0;
+  for (let i = 0; i < nums.length; i++) {
+    sum += nums[i];
+  }
+
+  // Step 2: Initialize left sum to 0.
+  let left = 0;
+
+  // Step 3: Iterate through the array to find the pivot index.
+  for (let i = 0; i < nums.length; i++) {
+    // Calculate the right sum by subtracting the left sum and the current element from the total sum.
+    let right = sum - left - nums[i];
+
+    // Check if the left sum equals the right sum.
+    if (left === right) {
+      return i; // Pivot index found.
+    }
+
+    // Update the left sum by adding the current element.
+    left += nums[i];
+  }
+
+  // If no pivot index is found, return -1.
+  return -1;
+};
