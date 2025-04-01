@@ -414,3 +414,142 @@ var findPivotIndex = function (nums) {
   // If no pivot index is found, return -1.
   return -1;
 };
+
+// ---------------------------------------------------------
+
+// You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+
+// Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+// Return the maximum amount of water a container can store.
+
+// Notice that you may not slant the container.
+
+// Example 1:
+// Input: height = [1,8,6,2,5,4,8,3,7]
+// Output: 49
+// Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+
+// Example 2:
+// Input: height = [1,1]
+// Output: 1
+
+var maxArea = function (height) {
+  // Initialize two pointers at the start and end of the array
+  let left = 0;
+  let right = height.length - 1;
+
+  // Track the maximum area found
+  let maxArea = 0;
+
+  // Move the pointers toward each other while evaluating container area
+  while (left < right) {
+    // Calculate the area between the two lines
+    let currentArea = (right - left) * Math.min(height[left], height[right]);
+
+    // Update maxArea if a larger area is found
+    maxArea = Math.max(maxArea, currentArea);
+
+    // Move the pointer pointing to the shorter line inward
+    if (height[left] < height[right]) {
+      left++;
+    } else {
+      right--;
+    }
+  }
+
+  // Return the maximum area found
+  return maxArea;
+};
+
+// ---------------------------------------------------------
+
+// Given a string s, find the length of the longest substring without duplicate characters.
+
+// Example 1:
+// Input: s = "abcabcbb"
+// Output: 3
+// Explanation: The answer is "abc", with the length of 3.
+
+// Example 2:
+// Input: s = "bbbbb"
+// Output: 1
+// Explanation: The answer is "b", with the length of 1.
+
+// Example 3:
+// Input: s = "pwwkew"
+// Output: 3
+// Explanation: The answer is "wke", with the length of 3.
+// Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+
+var lengthOfLongestSubstring = function (s) {
+  // Initialize a Set to store unique characters in the current window
+  let set = new Set();
+
+  // Left pointer to track the start of the window
+  let left = 0;
+
+  // Track the maximum length of valid substrings found
+  let maxLength = 0;
+
+  // 'i' acts as the right pointer, expanding the window character by character
+  for (let i = 0; i < s.length; i++) {
+    // If the character is a duplicate, shrink the window from the left
+    while (set.has(s[i])) {
+      set.delete(s[left]);
+      left++;
+    }
+
+    // Add the current character and update the maxLength
+    set.add(s[i]);
+    maxLength = Math.max(maxLength, set.size);
+  }
+
+  // Return the length of the longest valid substring
+  return maxLength;
+};
+
+// ---------------------------------------------------------
+Given a string s, return the longest palindromic substring in s.
+
+Example 1:
+Input: s = "babad"
+Output: "bab"
+Explanation: "aba" is also a valid answer.
+
+Example 2:
+Input: s = "cbbd"
+Output: "bb"
+
+// Finds the longest palindromic substring in the given string
+var longestPalindrome = function (s) {
+  // Store the longest palindrome found
+  let result = '';
+
+  // Helper function to expand outward from the center
+  function expandAroundCenter(left, right) {
+    // Expand as long as the characters at left and right match
+    while (left >= 0 && right < s.length && s[left] === s[right]) {
+      left--;
+      right++;
+    }
+    // Return the matching substring (we went one step too far)
+    return s.slice(left + 1, right);
+  }
+
+  // Check every character as a center of potential palindrome
+  for (let i = 0; i < s.length; i++) {
+    // Check for odd-length palindrome centered at index i
+    let odd = expandAroundCenter(i, i);
+    // Check for even-length palindrome centered between i and i + 1
+    let even = expandAroundCenter(i, i + 1);
+
+    // Update the result if a longer palindrome is found
+    if (odd.length > result.length) result = odd;
+    if (even.length > result.length) result = even;
+  }
+
+  // Return the longest palindromic substring found
+  return result;
+};
+
