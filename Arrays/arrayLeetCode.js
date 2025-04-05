@@ -529,3 +529,123 @@ var threeSum = function (nums) {
   // Return all unique triplets that sum to 0
   return result;
 };
+
+// ---------------------------------------------------------
+
+// Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+
+// You must write an algorithm with O(log n) runtime complexity.
+
+// Example 1:
+// Input: nums = [-1,0,3,5,9,12], target = 9
+// Output: 4
+// Explanation: 9 exists in nums and its index is 4
+
+// Example 2:
+// Input: nums = [-1,0,3,5,9,12], target = 2
+// Output: -1
+// Explanation: 2 does not exist in nums so return -1
+
+var search = function (nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    if (target === nums[i]) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+var search = function (nums, target) {
+  // Initialize two pointers to represent the current search window
+  let left = 0;
+  let right = nums.length - 1;
+
+  // Continue the loop as long as the window is valid (left doesn't cross right)
+  while (left <= right) {
+    // Find the middle index of the current window
+    let mid = Math.floor((left + right) / 2);
+
+    // If the middle element is the target, return its index
+    if (nums[mid] === target) {
+      return mid;
+    }
+    // If the middle element is less than the target, search the right half
+    else if (nums[mid] < target) {
+      left = mid + 1;
+    }
+    // If the middle element is greater than the target, search the left half
+    else {
+      right = mid - 1;
+    }
+  }
+
+  // If the target is not found, return -1
+  return -1;
+};
+
+// ---------------------------------------------------------
+
+// Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+// If target is not found in the array, return [-1, -1].
+// You must write an algorithm with O(log n) runtime complexity.
+
+// Example 1:
+// Input: nums = [5,7,7,8,8,10], target = 8
+// Output: [3,4]
+
+// Example 2:
+// Input: nums = [5,7,7,8,8,10], target = 6
+// Output: [-1,-1]
+
+// Example 3:
+// Input: nums = [], target = 0
+// Output: [-1,-1]
+
+var searchRange = function (nums, target) {
+  // Helper function to find the first occurrence of the target
+  function findFirst(nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
+    let index = -1; // Start with -1 in case target is not found
+
+    while (left <= right) {
+      let mid = Math.floor((left + right) / 2);
+
+      if (nums[mid] === target) {
+        index = mid; // Save the index
+        right = mid - 1; // Keep searching to the left (for earlier match)
+      } else if (nums[mid] < target) {
+        left = mid + 1; // Search right half
+      } else {
+        right = mid - 1; // Search left half
+      }
+    }
+
+    return index;
+  }
+
+  // Helper function to find the last occurrence of the target
+  function findLast(nums, target) {
+    let left = 0;
+    let right = nums.length - 1;
+    let index = -1; // Start with -1 in case target is not found
+
+    while (left <= right) {
+      let mid = Math.floor((left + right) / 2);
+
+      if (nums[mid] === target) {
+        index = mid; // Save the index
+        left = mid + 1; // Keep searching to the right (for later match)
+      } else if (nums[mid] < target) {
+        left = mid + 1; // Search right half
+      } else {
+        right = mid - 1; // Search left half
+      }
+    }
+
+    return index;
+  }
+
+  // Return both the first and last index as a pair
+  return [findFirst(nums, target), findLast(nums, target)];
+};
