@@ -296,3 +296,75 @@ var characterReplacement = function (s, k) {
 
   return maxLength;
 };
+
+// ------------------------------------------------------
+
+// Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "".
+
+// The testcases will be generated such that the answer is unique.
+
+// Example 1:
+// Input: s = "ADOBECODEBANC", t = "ABC"
+// Output: "BANC"
+// Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
+
+// Example 2:
+// Input: s = "a", t = "a"
+// Output: "a"
+// Explanation: The entire string s is the minimum window.
+
+// Example 3:
+// Input: s = "a", t = "aa"
+// Output: ""
+// Explanation: Both 'a's from t must be included in the window.
+// Since the largest window of s only has one 'a', return empty string.
+
+var minWindow = function (s, t) {
+  let map = {}; // Store frequency of each char in t
+  let left = 0; // Left pointer of window
+  let right = 0; // Right pointer of window
+  let required = 0; // Number of unique characters in t that we need
+  let formed = 0; // Number of unique characters in current window that match t's requirement
+  let windowCounts = {}; // Frequency map for characters in the current window
+  let minLen = Infinity; // Length of the smallest valid window
+  let result = ''; // Result substring
+
+  // Step 1: Fill the frequency map with characters in t
+  for (let char of t) {
+    map[char] = (map[char] || 0) + 1;
+  }
+  required = Object.keys(map).length;
+
+  // Step 2: Expand the window using the right pointer
+  while (right < s.length) {
+    let char = s[right];
+    windowCounts[char] = (windowCounts[char] || 0) + 1;
+
+    // If this char completes the count we need from t
+    if (map[char] && windowCounts[char] === map[char]) {
+      formed++;
+    }
+
+    // Step 3: Try to contract from the left while it's valid
+    while (left <= right && formed === required) {
+      let windowSize = right - left + 1;
+      if (windowSize < minLen) {
+        minLen = windowSize;
+        result = s.slice(left, right + 1);
+      }
+
+      // Shrink window
+      let leftChar = s[left];
+      windowCounts[leftChar]--;
+      if (map[leftChar] && windowCounts[leftChar] < map[leftChar]) {
+        formed--;
+      }
+      left++;
+    }
+
+    // Move right pointer forward
+    right++;
+  }
+
+  return result;
+};
