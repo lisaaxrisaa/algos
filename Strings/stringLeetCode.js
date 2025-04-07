@@ -368,3 +368,73 @@ var minWindow = function (s, t) {
 
   return result;
 };
+
+// ------------------------------------------------------
+
+// Given two strings s and p, return an array of all the start indices of p's anagrams in s. You may return the answer in any order.
+
+// Example 1:
+// Input: s = "cbaebabacd", p = "abc"
+// Output: [0,6]
+// Explanation:
+// The substring with start index = 0 is "cba", which is an anagram of "abc".
+// The substring with start index = 6 is "bac", which is an anagram of "abc".
+
+// Example 2:
+// Input: s = "abab", p = "ab"
+// Output: [0,1,2]
+// Explanation:
+// The substring with start index = 0 is "ab", which is an anagram of "ab".
+// The substring with start index = 1 is "ba", which is an anagram of "ab".
+// The substring with start index = 2 is "ab", which is an anagram of "ab".
+
+var findAnagrams = function (s, p) {
+  // Frequency map for characters in string p
+  let map = {};
+  let left = 0;
+  let result = [];
+
+  // Step 1: Count each character's frequency in p
+  for (const char of p) {
+    map[char] = (map[char] || 0) + 1;
+  }
+
+  // Number of unique characters we need to match
+  let required = Object.keys(map).length;
+
+  // Frequency map for characters in the current window in s
+  let windowMap = {};
+  let matched = 0;
+
+  // Step 2: Expand window using the right pointer
+  for (let right = 0; right < s.length; right++) {
+    let char = s[right];
+    windowMap[char] = (windowMap[char] || 0) + 1;
+
+    // If current character matches the exact count needed from p
+    if (map[char] && windowMap[char] === map[char]) {
+      matched++;
+    }
+
+    // Step 3: Shrink window if it's larger than p's length
+    while (right - left + 1 > p.length) {
+      let leftChar = s[left];
+
+      // If we're removing a fully matched character, reduce matched count
+      if (map[leftChar] && windowMap[leftChar] === map[leftChar]) {
+        matched--;
+      }
+
+      // Decrease frequency of the leftmost character and move window
+      windowMap[leftChar]--;
+      left++;
+    }
+
+    // Step 4: If all required characters match, store the start index
+    if (matched === required) {
+      result.push(left);
+    }
+  }
+
+  return result;
+};
