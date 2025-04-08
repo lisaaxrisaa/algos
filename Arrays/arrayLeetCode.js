@@ -780,3 +780,14 @@ var maxProfit = function (prices) {
   // Return the maximum profit that could be made
   return maxProfit;
 };
+
+const buySell = (prices) => {
+  let minPrice = prices[0];
+  let maxProfit = 0;
+  for (let i = 1; i < prices.length; i++) {
+    minPrice = Math.min(minPrice, prices[i]);
+    profit = prices[i] - minPrice;
+    maxProfit = Math.max(maxProfit, profit);
+  }
+  return maxProfit;
+};
