@@ -574,3 +574,62 @@ function blueTicket(a, b, c) {
   }
   return 0;
 }
+
+// ------------------------------------------------------
+
+// Given two ints, each in the range 10..99, return true if there is a digit that appears in both numbers, such as the 2 in 12 and 23. (Note: division, e.g. n/10, gives the left digit while the % "mod" n%10 gives the right digit.)
+
+// Examples
+// shareDigit(12, 23) → true
+// shareDigit(12, 43) → false
+// shareDigit(12, 44) → false
+
+// Brute force
+function shareDigit(a, b) {
+  let digitA = String(a);
+  let digitB = String(b);
+  if (
+    digitA.slice(0, 1) === digitB.slice(-1) ||
+    digitA.slice(-1) === digitB.slice(0, 1) ||
+    digitA.slice(-1) === digitB.slice(-1)
+  ) {
+    return true;
+  }
+  return false;
+}
+
+// OR
+
+function shareDigit(a, b) {
+  let aLeft = Math.floor(a / 10);
+  let aRight = a % 10;
+  let bLeft = Math.floor(b / 10);
+  let bRight = b % 10;
+  if (
+    aLeft === bLeft ||
+    aLeft === bRight ||
+    aRight === bLeft ||
+    aRight === bRight
+  ) {
+    return true;
+  }
+  return false;
+}
+
+// ------------------------------------------------------
+// Given 2 non-negative ints, a and b, return their sum, so long as the sum has the same number of digits as a. If the sum has more digits than a, just return a without b. (Note: one way to compute the number of digits of a non-negative int n is to convert it to a string with String.valueOf(n) and then check the length of the string.)
+
+// Examples
+// sumLimit(2, 3) → 5
+// sumLimit(8, 3) → 8
+// sumLimit(8, 1) → 9
+
+function sumLimit(a, b) {
+  let c = a + b;
+  let aDigit = String(a);
+  let digits = String(c);
+  if (digits.length > aDigit.length) {
+    return a;
+  }
+  return a + b;
+}
