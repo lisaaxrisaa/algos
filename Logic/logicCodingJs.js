@@ -633,3 +633,25 @@ function sumLimit(a, b) {
   }
   return a + b;
 }
+
+// ------------------------------------------------------
+
+// We want to make a row of bricks that is goal inches long. We have a number of small bricks (1 inch each) and big bricks (5 inches each). Return true if it is possible to make the goal by choosing from the given bricks. This is a little harder than it looks and can be done without any loops. See also: Introduction to MakeBricks
+
+// Examples
+// makeBricks(3, 1, 8) → true
+// makeBricks(3, 1, 9) → false
+// makeBricks(3, 2, 10) → true
+
+function makeBricks(small, big, goal) {
+  // Step 1: Find out how many big bricks (5 inches each) we can actually use
+  // It's the smaller of the number we have or how many fit in the goal
+  let maxBigBricks = Math.min(big, Math.floor(goal / 5));
+
+  // Step 2: Subtract the inches covered by big bricks from the goal
+  // This gives us the number of inches left to cover with small bricks
+  let remaining = goal - maxBigBricks * 5;
+
+  // Step 3: Check if we have enough small bricks (1 inch each) to cover the rest
+  return small >= remaining;
+}
