@@ -685,3 +685,21 @@ function loneSum(a, b, c) {
   // If all numbers are unique, return their sum
   return a + b + c;
 }
+
+// ------------------------------------------------------
+
+// Given 3 int values, a b c, return their sum. However, if one of the values is 13 then it does not count towards the sum and values to its right do not count. So for example, if b is 13, then both b and c do not count.
+
+// Examples
+// luckySum(1, 2, 3) → 6
+// luckySum(1, 2, 13) → 3
+// luckySum(1, 13, 3) → 1
+
+if (a === 13) {
+  return 0; // a is 13 → everything gets ignored
+} else if (b === 13) {
+  return a; // b is 13 → only a counts
+} else if (c === 13) {
+  return a + b; // c is 13 → a and b count, not c
+}
+return a + b + c; // no 13s → everything counts
