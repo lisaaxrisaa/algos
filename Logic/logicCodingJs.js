@@ -712,3 +712,47 @@ return a + b + c; // no 13s → everything counts
 // noTeenSum(1, 2, 3) → 6
 // noTeenSum(2, 13, 1) → 3
 // noTeenSum(2, 1, 14) → 3
+
+function noTeenSum(a, b, c) {
+  // Helper function to adjust a value if it's a "bad" teen
+  function fixTeen(n) {
+    // If n is between 13 and 19 (inclusive),
+    // AND it's not 15 or 16, treat it as 0
+    if (n >= 13 && n <= 19 && n !== 15 && n !== 16) {
+      return 0;
+    } else {
+      // Otherwise, return the number as-is
+      return n;
+    }
+  }
+
+  // Apply fixTeen to each input and return their adjusted sum
+  return fixTeen(a) + fixTeen(b) + fixTeen(c);
+}
+
+// ------------------------------------------------------
+
+// For this problem, we'll round an int value up to the next multiple of 10 if its rightmost digit is 5 or more, so 15 rounds up to 20. Alternately, round down to the previous multiple of 10 if its rightmost digit is less than 5, so 12 rounds down to 10. Given 3 ints, a b c, return the sum of their rounded values. To avoid code repetition, write a separate helper "public int round10(int num) {" and call it 3 times. Write the helper entirely below and at the same indent level as roundSum().
+
+// Examples
+// roundSum(16, 17, 18) → 60
+// roundSum(12, 13, 14) → 30
+// roundSum(6, 4, 4) → 10
+
+function roundSum(a, b, c) {
+  // Helper function to round a number to the nearest multiple of 10
+  function round10(num) {
+    const remainder = num % 10; // Get the rightmost digit
+
+    // If the rightmost digit is 5 or more, round up
+    if (remainder >= 5) {
+      return num + (10 - remainder); // e.g., 16 → 20, 19 → 20
+    } else {
+      // Otherwise, round down
+      return num - remainder; // e.g., 12 → 10, 13 → 10
+    }
+  }
+
+  // Call the helper on each number and return their rounded sum
+  return round10(a) + round10(b) + round10(c);
+}
