@@ -795,3 +795,42 @@ function closeFar(a, b, c) {
   // If neither case applies, return false
   return false;
 }
+
+// ------------------------------------------------------
+
+// Given 2 int values greater than 0, return whichever value is nearest to 21 without going over. Return 0 if they both go over.
+
+// Examples
+// blackjack(19, 21) → 21
+// blackjack(21, 19) → 21
+// blackjack(19, 22) → 19
+
+function blackjack(a, b) {
+  // Determine if a and b are valid (<= 21)
+  const aValid = a <= 21;
+  const bValid = b <= 21;
+
+  if (!aValid && !bValid) {
+    return 0; // Both are over 21
+  }
+
+  if (aValid && !bValid) {
+    return a; // Only a is valid
+  }
+
+  if (!aValid && bValid) {
+    return b; // Only b is valid
+  }
+
+  // Both are valid, return the one closer to 21
+  const aDiff = 21 - a;
+  const bDiff = 21 - b;
+
+  if (aDiff < bDiff) {
+    return a;
+  } else if (bDiff < aDiff) {
+    return b;
+  } else {
+    return a; // or b, since they are equal
+  }
+}
