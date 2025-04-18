@@ -765,3 +765,33 @@ function roundSum(a, b, c) {
 // closeFar(1, 2, 10) → true
 // closeFar(1, 2, 3) → false
 // closeFar(4, 1, 3) → true
+
+function closeFar(a, b, c) {
+  // Helper to check if two values are "close" (difference of 0 or 1)
+  function isClose(x, y) {
+    return Math.abs(x - y) <= 1;
+  }
+
+  // Helper to check if one value is "far" from two others (diff of 2 or more from both)
+  function isFar(x, y, z) {
+    return Math.abs(x - y) >= 2 && Math.abs(x - z) >= 2;
+  }
+
+  // Check if b is close to a
+  const bClose = isClose(a, b);
+  // Check if c is close to a
+  const cClose = isClose(a, c);
+
+  // Case 1: b is close to a, and c is far from both a and b
+  if (bClose && isFar(c, a, b)) {
+    return true;
+  }
+
+  // Case 2: c is close to a, and b is far from both a and c
+  if (cClose && isFar(b, a, c)) {
+    return true;
+  }
+
+  // If neither case applies, return false
+  return false;
+}
