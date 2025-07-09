@@ -1219,3 +1219,24 @@ function has77(nums){
 }
 return false;
 }
+
+// Given an array of ints, return true if there is a 1 in the array with a 2 somewhere later in the array.
+
+// Examples
+// has12([1, 3, 2]) → true
+// has12([3, 1, 2]) → true
+// has12([3, 1, 4, 5, 2]) → true
+
+function has12(nums){
+  let foundOne = false;
+
+for (let i = 0; i < nums.length; i++) {
+  if (nums[i] === 1) {
+    foundOne = true;
+  } else if (foundOne && nums[i] === 2) {
+    return true;
+  }
+}
+
+return false;
+}
