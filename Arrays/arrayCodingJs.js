@@ -1240,3 +1240,23 @@ for (let i = 0; i < nums.length; i++) {
 
 return false;
 }
+
+// Given an array of ints, return true if the array contains either 3 even or 3 odd values all next to each other.
+
+// Examples
+// modThree([2, 1, 3, 5]) → true
+// modThree([2, 1, 2, 5]) → false
+// modThree([2, 4, 2, 5]) → true
+
+function modThree(nums){
+  for (let i = 0; i < nums.length - 2; i++) {
+  let a = nums[i] % 2;
+  let b = nums[i + 1] % 2;
+  let c = nums[i + 2] % 2;
+
+  if (a === b && b === c) {
+    return true;
+  }
+}
+return false;
+}
